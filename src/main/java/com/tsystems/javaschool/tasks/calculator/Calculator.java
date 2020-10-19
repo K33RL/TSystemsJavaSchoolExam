@@ -54,7 +54,7 @@ public class Calculator {
         }
 
         return format.format(result);
-
+ 
     }
 
     public static Double calc(List<String> postfix) {
