@@ -17,14 +17,12 @@ public class PyramidBuilder {
     public int[][] buildPyramid(List<Integer> inputNumbers) {
         // TODO : Implement your solution here
         if (inputNumbers.contains(null)|| inputNumbers.size()>9999)throw new CannotBuildPyramidException();
-        boolean flag;//Флаг для возможности/невозможности построения пирамиды
-        int[][] matrix;//Получившаяся матрица
+        boolean flag;
+        int[][] matrix;
 
         System.out.println("Введенная последовательность: " + inputNumbers);
 
-        int size = inputNumbers.size();//Проверяем размер полученного массива
-
-        //Проверим, является ли данное число треугольным
+        int size = inputNumbers.size();
         int count = 0;
         int rows = 1;
         int cols = 1;
@@ -33,28 +31,23 @@ public class PyramidBuilder {
             rows++;
             cols = cols + 2;
         }
-        rows = rows - 1;//Актуальное число строк
-        cols = cols - 2;//Актуальное число столбцов
+        rows = rows - 1;
+        cols = cols - 2;
 
         if (size == count) {
-            flag = true;//Если возможно построить матрицу
+            flag = true;
         } else flag = false;
 
         if (flag) {
             List<Integer> sorted = inputNumbers.stream().sorted().collect(Collectors.toList());
-//            System.out.println("Отсортированная последовательность по возрастанию: " + sorted);
-//            System.out.println("Количество элементов в последовательности: " + size);
-//            System.out.println("Число столбцов(cols) матрицы будет равно: " + cols);
-//            System.out.println("Число строк(rows) матрицы будет равно: " + rows);
-
-            matrix = new int[rows][cols];//Задаем размерность матрице
+            matrix = new int[rows][cols];
             for (int[] row : matrix) {
                 Arrays.fill(row, 0);
             }
 
-            int center = (cols / 2);//Находим центральную точку матрицы
-            count = 1; // сколько чисел будет в строке
-            int arrIdx = 0; // индекс массива 
+            int center = (cols / 2);
+            count = 1; 
+            int arrIdx = 0; 
 
             for (int i = 0, offset = 0; i < rows; i++, offset++, count++) {
                 int start = center - offset;
@@ -63,13 +56,13 @@ public class PyramidBuilder {
                 }
             }
 
-            for(int [] a: matrix)//выводим матрицу на экран
+            for(int [] a: matrix)
             {
                 for(int b: a)
                     System.out.print(b+" ");
                 System.out.println();
             }
-        }//Выбрасываем исключение
+        }
         else{
             throw new CannotBuildPyramidException();
         }
