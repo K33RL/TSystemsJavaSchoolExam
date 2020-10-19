@@ -29,7 +29,7 @@ public class Subsequence {
                     if (x.get(i).equals(y.get(j))) {
                         count++;
                         marker = j++;
-                        break;
+                        break; 
                     }
                 }
             }
