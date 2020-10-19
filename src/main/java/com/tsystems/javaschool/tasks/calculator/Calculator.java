@@ -115,7 +115,6 @@ class ExpressionParser {
         while (tokenizer.hasMoreTokens()) {
             curr = tokenizer.nextToken();
             if (!tokenizer.hasMoreTokens() && isOperator(curr)) {
-                System.out.println("Некорректное выражение.");
                 flag = false;
                 return null;
             }
@@ -126,7 +125,6 @@ class ExpressionParser {
                     while (!stack.peek().equals("(")) {
                         postfix.add(stack.pop());
                         if (stack.isEmpty()) {
-                            System.out.println("Скобки не согласованы.");
                             flag = false;
                             return null;
                         }
@@ -134,7 +132,6 @@ class ExpressionParser {
                     stack.pop();
                 } else {
                     if (curr.equals("-") && (prev.equals("") || (isDelimiter(prev) && !prev.equals(")")))) {
-                        // унарный минус
                         curr = "u-";
                     } else {
                         while (!stack.isEmpty() && (priority(curr) <= priority(stack.peek()))) {
@@ -154,7 +151,6 @@ class ExpressionParser {
         while (!stack.isEmpty()) {
             if (isOperator(stack.peek())) postfix.add(stack.pop());
             else {
-                System.out.println("Скобки не согласованы.");
                 flag = false;
                 return null;
             }
