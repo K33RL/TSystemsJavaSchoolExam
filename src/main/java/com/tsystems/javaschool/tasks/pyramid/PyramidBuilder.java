@@ -54,7 +54,7 @@ public class PyramidBuilder {
 
             int center = (cols / 2);//Находим центральную точку матрицы
             count = 1; // сколько чисел будет в строке
-            int arrIdx = 0; // индекс массива
+            int arrIdx = 0; // индекс массива 
 
             for (int i = 0, offset = 0; i < rows; i++, offset++, count++) {
                 int start = center - offset;
